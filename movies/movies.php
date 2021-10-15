@@ -1,7 +1,7 @@
 <?php
 
 
-const movies = [
+const MOVIES_LIST = [
 	[
 		"title" => "The Shawshank Redemption",
 		"release_year" => 1994,

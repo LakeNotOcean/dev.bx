@@ -1,6 +1,6 @@
 <?php
 
-$var=1;
+
 function readIntData(string $inputMessage,string $errorMessage,
 	int $minValue=PHP_INT_MIN,int $maxValue=PHP_INT_MAX):int
 {

@@ -8,7 +8,7 @@ function printHelloMessage(string $message):void
 	echo $formatedMessage;
 }
 
-function printObject($obj):void
+function printObjectGeneral($obj):void
 {
 	echo "${obj}\n";
 }
