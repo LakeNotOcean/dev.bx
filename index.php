@@ -2,4 +2,4 @@
 
 include "consoleApp/PrintMoviesOnAgeRestr.php";
 
-printMoviesOnAgeRestr();
+printMoviesOnAgeRestriction();

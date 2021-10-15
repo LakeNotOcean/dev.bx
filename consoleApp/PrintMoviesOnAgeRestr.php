@@ -4,7 +4,7 @@ include "./movies/movies.php";
 include "PrintConsoleData.php";
 
 
-function printMoviesOnAgeRestr() {
+function printMoviesOnAgeRestriction() {
 	printHelloMessage("Добро пожаловать в базу данных фильмов!");
 	while(true){
 		$personAge=readIntData("Введите возраст: ",
