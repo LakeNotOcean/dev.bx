@@ -1,5 +1,5 @@
 <?php
 
-include "consoleApp/PrintMoviesOnAgeRestr.php";
+include "consoleApp/printMoviesOnAgeRestriction.php";
 
 printMoviesOnAgeRestriction();

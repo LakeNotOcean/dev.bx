@@ -4,7 +4,8 @@
 function readIntData(string $inputMessage,string $errorMessage,
 	int $minValue=PHP_INT_MIN,int $maxValue=PHP_INT_MAX):int
 {
-	while(true){
+	while(true)
+	{
 		echo $inputMessage.">> ";
 		$input=readline();
 		$inputNumber=(int)$input;
