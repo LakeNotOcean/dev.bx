@@ -4,9 +4,11 @@ include "./movies/movies.php";
 include "PrintConsoleData.php";
 
 
-function printMoviesOnAgeRestriction() {
+function printMoviesOnAgeRestriction()
+{
 	printHelloMessage("Добро пожаловать в базу данных фильмов!");
-	while(true){
+	while(true)
+	{
 		$personAge=readIntData("Введите возраст: ",
 						 "Возраст должен быть неотрицательным целым числом!",0);
 		foreach (MOVIES_LIST as $movie)
@@ -17,6 +19,7 @@ function printMoviesOnAgeRestriction() {
 	}
 }
 
-function formatMovieString(&$movie):string{
+function formatMovieString(&$movie):string
+{
 	return "{$movie["title"]} ({$movie['release_year']}), {$movie['age_restriction']}+ Rating - {$movie['rating']}";
 }
