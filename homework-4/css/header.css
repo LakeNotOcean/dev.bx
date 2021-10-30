@@ -3,6 +3,7 @@
 
 
 .header-panel{
+	font-family: Open Sans,sans-serif;
 	margin: 26px 51px 21px 43px;
 	display: flex;
 	flex-direction: row;
@@ -27,13 +28,29 @@
 }
 
 .search-space{
+
+
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	line-height: 40px;
+
+	/* identical to box height, or 222% */
+
+
 	margin-left: 13px;
 	width: 492px;
 	border: none;
 }
+.search-space::placeholder{
+	color: #999999;
+}
+
+.search-space:focus{
+	outline: none;
+}
 
 .header-button{
-	font-family: Open Sans, serif;
 	font-style: normal;
 	font-weight: bold;
 	font-size: 12px;
@@ -53,7 +70,7 @@
 .search-button{
 	width: 89px;
 	background: #E7A04E;
-	margin-left: auto;
+	margin-left: 10px;
 }
 
 .add-button{
