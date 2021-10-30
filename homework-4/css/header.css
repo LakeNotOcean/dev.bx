@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@600;700&display=swap');
+
+
+
+.header-panel{
+	margin: 26px 51px 21px 43px;
+	display: flex;
+	flex-direction: row;
+	justify-content:flex-start;
+}
+
+.searchbar{
+	display: flex;
+	flex-direction: row;
+	width: 777px;
+	border-bottom: 1px solid #C4C4C4;
+}
+
+
+
+.search-icon{
+	width: 21px;
+	margin-bottom: 10px;
+	margin-top:10px;
+	background-size: cover;
+	background: white;
+}
+
+.search-space{
+	margin-left: 13px;
+	width: 492px;
+	border: none;
+}
+
+.header-button{
+	font-family: Open Sans, serif;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 12px;
+	line-height: 40px;
+
+	text-align: center;
+	text-transform: uppercase;
+
+	border-radius: 7px;
+	border-color: white;
+
+
+
+	color: #FFFFFF;
+}
+
+.search-button{
+	width: 89px;
+	background: #E7A04E;
+	margin-left: auto;
+}
+
+.add-button{
+	width: 158px;
+	background: #4EE7B0;
+	margin-left: auto;
+
+}
+
