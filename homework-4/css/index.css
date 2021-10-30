@@ -1,6 +1,6 @@
 @import 'sidebarMenu.css';
 @import 'header.css';
-@import 'content.css';
+@import 'movieList.css';
 
 
 .wrapper{
@@ -14,28 +14,25 @@
 	min-width: 400px;
 	background: #383838;
 }
+
+
 .container{
 	display: flex;
 	flex-direction: column;
-	overflow-x: scroll;
+	overflow-x:scroll;
 }
 
-.header{
-	height: 88px;
-	background: white;
-	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05);
-}
+
 
 .content{
 	flex:1;
 	display: flex;
-	overflow:auto;
 	padding-top: 20px;
 	padding-left: 26px;
 
 
 
-	background: #CCCCCC;
+	background:#c4c4c4;
 }
 
 
