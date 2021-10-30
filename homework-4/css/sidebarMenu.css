@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@600&display=swap');
+
+.sidebar-logo{
+	display: flex;
+
+	height: 216px;
+
+	padding-left: 81px;
+	font-family: 'Bebas Neue', cursive;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 96px;
+	line-height: 23%;
+
+	align-items: center;
+	text-align: center;
+	text-transform: uppercase;
+	color: #43B0ED;
+
+}
+
+.menu{
+	display:block;
+	margin: 0 30px;
+}
+
+.menu-item{
+	display:block;
+	border-bottom: 1px solid rgba(242,242,242,.1);
+
+}
+
+.menu-item a{
+	display: flex;
+	height: 70px;
+	padding-left: 15px;
+
+	text-decoration: none;
+	font-family: Open Sans, sans-serif;
+	font-weight: 600;
+	font-size:18px;
+	line-height: 22px;
+	align-items: center;
+	text-transform: uppercase;
+	color:#B7B7B7;
+}
+
+.menu-item:last-child{
+	border-bottom:none;
+}
+
+.menu-item--active a,
+.menu-item a:hover{
+	color:white;
+	background: rgba(255, 255, 255, 0.05);
+}
