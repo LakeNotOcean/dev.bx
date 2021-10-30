@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@600;700&display=swap');
 
 
+.header{
+	height: 88px;
+	background: white;
+	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05);
+}
 
 .header-panel{
 	font-family: Open Sans,sans-serif;
@@ -21,7 +26,7 @@
 
 .search-icon{
 	width: 21px;
-	margin-bottom: 10px;
+	height: 21px;
 	margin-top:10px;
 	background-size: cover;
 	background: white;
