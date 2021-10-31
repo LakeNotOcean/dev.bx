@@ -17,6 +17,7 @@
 
 
 .container{
+	flex:1;
 	display: flex;
 	flex-direction: column;
 	overflow-x:scroll;
@@ -29,10 +30,6 @@
 	display: flex;
 	padding-top: 20px;
 	padding-left: 26px;
-
-
-
-	background:#c4c4c4;
 }
 
 
