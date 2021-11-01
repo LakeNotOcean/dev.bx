@@ -5,6 +5,7 @@
 	height: 88px;
 	background: white;
 	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05);
+	width: 100%;
 }
 
 .header-panel{
@@ -81,7 +82,7 @@
 .add-button{
 	width: 158px;
 	background: #4EE7B0;
-	margin-left: auto;
+	margin-left: 134px;
 
 }
 
