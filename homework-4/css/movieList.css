@@ -7,6 +7,8 @@
 	flex-direction: row;
 	column-gap: 20px;
 	justify-content: space-between;
+	max-width: 100%;
+	flex-wrap: wrap;
 
 }
 
