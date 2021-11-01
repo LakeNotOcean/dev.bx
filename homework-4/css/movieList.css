@@ -4,6 +4,7 @@
 
 .movie-list{
 	display: flex;
+	margin-left: 26px;
 	flex-direction: row;
 	column-gap: 20px;
 	justify-content: space-between;
@@ -21,6 +22,7 @@
 	background-color: white;
 	box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
 	border-radius: 20px;
+	margin-top: 20px;
 }
 
 .movie-list--item-image{
