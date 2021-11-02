@@ -17,7 +17,7 @@
 <body>
 <div class="wrapper">
 	<div class="sidebar">
-		<div class="sidebar-logo">BITFLIX</div>
+		<img class="sidebar-logo" src="./homework-4/assets/icons/Bitflix.svg" alt="BITFLIX">
 		<?= $menuList ?>
 	</div>
 	<div class="container">
