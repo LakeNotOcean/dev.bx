@@ -1,5 +1,10 @@
 <?php
 
+/** @var array $menuItemsRef */
+require_once "./homework-4/data/menu.php";
+
+// var_dump(__FILE__);
+
 function renderTemplate(string $path, array $templateData = []): string
 {
 	if (!file_exists($path))
@@ -16,7 +21,20 @@ function renderTemplate(string $path, array $templateData = []): string
 }
 
 
-function renderLayout(array $templateData=[]):string
+function renderLayout(string $content, array $templateData = []): string
 {
-	return renderTemplate('./homework-4/pages/layout.php',$templateData);
+	global $menuItemsRef;
+	$menuListLayout = renderTemplate("./homework-4/pagesAndParts/menuLayout.php",
+		['menuItemsRef' => $menuItemsRef]);
+
+	$searchBarLayout = renderTemplate("./homework-4/pagesAndParts/searchBarLayout.php");
+
+
+	$data = array_merge($templateData, [
+		'content' => $content,
+		'menuListLayout'=>$menuListLayout,
+		'headerLayout'=>$searchBarLayout,
+	]);
+	$result = renderTemplate("./homework-4/pagesAndParts/layout.php", $data);
+	return $result;
 }

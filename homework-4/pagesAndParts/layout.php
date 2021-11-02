@@ -1,6 +1,6 @@
 <?php
-/** @var string $menuList */
-/** @var string $header */
+/** @var string $menuListLayout */
+/** @var string $headerLayout */
 /** @var string $content */
 ?>
 
@@ -18,10 +18,10 @@
 <div class="wrapper">
 	<div class="sidebar">
 		<img class="sidebar-logo" src="./homework-4/assets/icons/Bitflix.svg" alt="BITFLIX">
-		<?= $menuList ?>
+		<?= $menuListLayout ?>
 	</div>
 	<div class="container">
-		<?= $header ?>
+		<?= $headerLayout ?>
 		<div class="content">
 			<?= $content ?>
 		</div>
