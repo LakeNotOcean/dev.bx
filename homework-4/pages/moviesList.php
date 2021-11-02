@@ -6,6 +6,9 @@
 	<?php
 	foreach ($movies as $movie): ?>
 		<div class="movie-list--item">
+			<div class="movie-list--item-overlay">
+				<a href="" class="movie-list--item-more">Подробнее</a>
+			</div>
 			<div class="movie-list--item-image"
 				 style="background-image: url('<?= $movie['imagePath'] ?>')">
 			</div>

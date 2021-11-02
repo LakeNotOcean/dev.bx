@@ -15,14 +15,61 @@
 
 .movie-list--item{
 
+	overflow: hidden;
+	position: relative;
+	display: inline-block;
+
 	font-family: Open Sans,sans-serif;
-	display: block;
 	width: 370px;
 	height: 700px;
 	background-color: white;
 	box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
 	border-radius: 20px;
 	margin-top: 20px;
+}
+
+.movie-list--item-overlay{
+	position: absolute;
+	top:0;
+	left:0;
+	right: 0;
+	bottom: 0;
+	display: flex;
+
+	align-content: center;
+	justify-content: center;
+	align-items: center;
+
+	background: rgba(0,0,0,0.8);
+
+	z-index: 5050;
+
+	opacity: 0;
+	transition: 0.1s;
+}
+
+.movie-list--item:hover .movie-list--item-overlay{
+	opacity: 1;
+}
+
+.movie-list--item-more{
+	display: inline-flex;
+
+	align-content: center;
+	align-items: center;
+	justify-content: center;
+
+	width: 220px;
+	height: 56px;
+	background-color: #4ee7b0;
+	border-radius: 7px;
+	font-family: 'Open Sans',sans-serif;
+	font-weight: bold;
+	font-size: 18px;
+	text-align: center;
+	text-transform: uppercase;
+	color:white;
+	text-decoration: none;
 }
 
 .movie-list--item-image{

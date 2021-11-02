@@ -32,27 +32,5 @@
 	max-width: calc(95% - 400px);
 }
 
-.movie-list{
-	display: flex;
-	margin-left: 26px;
-	flex-direction: row;
-	column-gap: 20px;
-	justify-content: space-between;
-	max-width: 100%;
-	flex-wrap: wrap;
-
-}
-
-.movie-list--item{
-
-	font-family: Open Sans,sans-serif;
-	display: block;
-	width: 370px;
-	height: 700px;
-	background-color: white;
-	box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
-	border-radius: 20px;
-	margin-top: 20px;
-}
 
 
