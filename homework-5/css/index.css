@@ -1,0 +1,39 @@
+@import 'parts/sidebarMenu.css';
+@import 'parts/header.css';
+@import 'movieList.css';
+@import 'movieDetail.css';
+
+
+.wrapper{
+	display: flex;
+	overflow: hidden;
+	height: 100vh;
+}
+
+.sidebar{
+	display:block;
+	min-width: 400px;
+	background: #383838;
+	height: 100%;
+	position: absolute;
+}
+
+.container{
+	flex:1;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	left: 400px;
+	overflow-y: scroll;
+	overflow-x: scroll;
+}
+
+.content{
+	flex:1;
+	display: flex;
+	max-width: calc(95% - 400px);
+	box-sizing: border-box;
+}
+
+
+
