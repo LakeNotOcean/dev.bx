@@ -18,7 +18,7 @@ function getMoviesByGenre(array $movies, string $genre): array
 	});
 }
 
-function getMovieById(array $movies, string $id): ?array
+function getMovieById(array $movies, string $id): array
 {
 	foreach ($movies as $movie)
 	{
@@ -27,7 +27,7 @@ function getMovieById(array $movies, string $id): ?array
 			return $movie;
 		}
 	}
-	return null;
+	return [];
 }
 
 function formatDurationForHoursAndMinutes(int $durationInMinutes): string

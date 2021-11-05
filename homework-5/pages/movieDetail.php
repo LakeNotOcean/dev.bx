@@ -20,13 +20,13 @@ if (is_null($searchBarLayout))
 }
 
 $menuLayout = renderMenuLayout('main');
-$movieDetailLayout = "Фильм с id ${$_GET['id']} отсутствует в базе данных";
+$movieDetailLayout = "Фильм с запрошенным id отсутствует в базе данных";
 
 if (isset($_GET['id']))
 {
 	$movie = getMovieById($movies, $_GET['id']);
 
-	if (!is_null($movie))
+	if (!empty($movie))
 	{
 		$movieDetailLayout = renderMovieDetailLayout($movie);
 	}
