@@ -120,7 +120,7 @@
 
 .movie-list--item-description{
 	margin: 15px 20px;
-	max-height: 99px;
+	height: 99px;
 
 	font-style: normal;
 	font-weight: 400;
