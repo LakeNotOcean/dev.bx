@@ -5,7 +5,7 @@
 	height: 88px;
 	background: white;
 	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05);
-	width: 100%;
+	width: 100vw;
 	position: sticky;
 	top:0;
 	z-index: 100;
@@ -23,7 +23,8 @@
 	display: flex;
 	flex-direction: row;
 	width: 777px;
-	border-bottom: 1px solid #C4C4C4;
+	align-items: center;
+
 }
 
 
@@ -50,6 +51,7 @@
 	margin-left: 13px;
 	width: 492px;
 	border: none;
+	border-bottom: 1px solid #C4C4C4;
 }
 .search-space::placeholder{
 	border: none;
@@ -71,6 +73,8 @@
 	border-radius: 7px;
 	border-color: white;
 
+	text-decoration: none;
+
 
 
 	color: #FFFFFF;
@@ -81,11 +85,17 @@
 	background: #E7A04E;
 	margin-left: 10px;
 }
+.search-button:hover{
+	background: #ff8c00;
+}
 
 .add-button{
 	width: 158px;
 	background: #4EE7B0;
-	margin-left: 134px;
 
+}
+
+.add-button:hover{
+	background: #09a676;;
 }
 

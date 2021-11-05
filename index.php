@@ -1,23 +1,55 @@
 <?php
 
-
 /** @var array $movies */
-require_once "./homework-5/lib/template-functions.php";
-require_once "./homework-5/data/menu.php";
-require_once "./homework-5/data/movies.php";
+/** @var string $homeworkPath */
+/** @var string $clockImagePath */
+/** @var string $moviesImagePath */
+/** @var array $genres */
+/** @var string $searchBarLayout */
 
+require_once dirname(__FILE__) . '/pathVariables.php';
+require_once ROOT . "${homeworkPath}/lib/template-functions.php";
+require_once ROOT . "${homeworkPath}/data/movies.php";
+require_once ROOT . "${homeworkPath}/lib/help-functions.php";
+require_once ROOT . "${homeworkPath}/data/genres.php";
+require_once ROOT . "${homeworkPath}/data/generatedLayouts.php";
 
+$currentActiveTitle = 'main';
 
-$moviesListLayout = renderTemplate('./homework-5/pagesAndParts/moviesList.php',
-	['movies' => $movies]);
+if (isset($_GET['genre']))
+{
+	$genre = $genres[$_GET['genre']];
+	if (!empty($genre))
+	{
+		$movies = getMoviesByGenre($movies, $genre);
+		$currentActiveTitle = $_GET['genre'];
+	}
+}
+else if (isset($_GET['search']))
+{
+	$search=$_GET['search'];
+	$movies=searchMoviesByTitle($movies,$search);
 
+}
 
+$menuLayout = renderMenuLayout($currentActiveTitle);
+if (is_null($searchBarLayout))
+{
+	$searchBarLayout = renderSearchBarLayout();
+}
 
-$result=renderLayout(
-	$moviesListLayout,
-);
+if (!empty($movies))
+{
+	$content = renderTemplate(getLayoutPathName("moviesLayout.php"), [
+		'movies' =>
+			$movies,
+		'clockImagePath' => $clockImagePath,
+		'moviesImagePath' => $moviesImagePath,
+	]);
+	}
+else $content="Нет подходящих фильмов";
 
-echo $result;
+echo renderFullPageWithContent($menuLayout, $searchBarLayout, $content);
 
 
 

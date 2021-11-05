@@ -1,23 +1,27 @@
 <?php
 /**@var array $movies */
+/**@var string $moviesImagePath*/
+/**@var string $clockImagePath*/
+/** @var string $pagesPath */
+/** @fn formatDurationForHoursAndMinutes */
+/** @var string $baseURL */
 ?>
 
 <div class="movie-list">
-	<?php
-	foreach ($movies as $movie): ?>
+	<? foreach ($movies as $movie): ?>
 		<div class="movie-list--item">
 			<div class="movie-list--item-overlay">
-				<a href="" class="movie-list--item-more">Подробнее</a>
+				<a href=<?="${pagesPath}/movieDetail.php?id=${movie['id']}"?> class="movie-list--item-more">Подробнее</a>
 			</div>
 			<div class="movie-list--item-image"
-				 style="background-image: url('<?= $movie['imagePath'] ?>')">
+				 style="background-image: url(<?= "${baseURL}${moviesImagePath}/${movie['id']}.jpg" ?>)">
 			</div>
 			<div class="movie-list--item-head">
 				<div class="movie-list--item-title">
-					<?= $movie['name'] ?>
+					<?= $movie['title'] ?>
 				</div>
 				<div class="movie-list--item-subtitle">
-					<?= $movie['engName'] ?>
+					<?= $movie['original-title'] ?>
 				</div>
 			</div>
 			<div class="movie-list--item-description">
@@ -25,14 +29,14 @@
 			</div>
 			<div class="movie-list--item-bottom">
 				<div class="movie-list--item-bottom-icon"
-					 style="background-image: url('./homework-5/assets/icons/clock 1.svg')">
+					 style="background-image: url(<?="${baseURL}${clockImagePath}"?>)">
 
 				</div>
 				<div class="movie-list--item-time">
-					<?= $movie['time'] ?>
+					<?= formatDurationForHoursAndMinutes($movie['duration']) ?>
 				</div>
 				<div class="movie-list--item-info">
-					<?= $movie['genres'] ?>
+					<?=implode(',',$movie['genres']) ?>
 				</div>
 			</div>
 		</div>

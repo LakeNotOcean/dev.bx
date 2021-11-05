@@ -24,10 +24,10 @@ function renderTemplate(string $path, array $templateData = []): string
 function renderLayout(string $content, array $templateData = []): string
 {
 	global $menuItemsRef;
-	$menuListLayout = renderTemplate("./homework-4/pagesAndParts/menuLayout.php",
+	$menuListLayout = renderTemplate("./homework-4/layouts/menuLayout.php",
 		['menuItemsRef' => $menuItemsRef]);
 
-	$searchBarLayout = renderTemplate("./homework-4/pagesAndParts/searchBarLayout.php");
+	$searchBarLayout = renderTemplate("./homework-4/layouts/searchBarLayout.php");
 
 
 	$data = array_merge($templateData, [
@@ -35,6 +35,6 @@ function renderLayout(string $content, array $templateData = []): string
 		'menuListLayout'=>$menuListLayout,
 		'headerLayout'=>$searchBarLayout,
 	]);
-	$result = renderTemplate("./homework-4/pagesAndParts/layout.php", $data);
+	$result = renderTemplate("./homework-4/layouts/layout.php", $data);
 	return $result;
 }

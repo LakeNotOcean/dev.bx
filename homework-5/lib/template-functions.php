@@ -1,12 +1,25 @@
 <?php
 
-/** @var array $menuItemsRef */
-require_once "./homework-5/data/menu.php";
+/** @var array $menuConstItems */
+/** @var array $genres */
 
-// var_dump(__FILE__);
+/** @var string $searchIconPath */
+/** @var string $sidebarLogoPath */
+/** @var string $favIconsPath */
+/** @var string $moviesImagePath */
+
+/** @var string $homeworkPath */
+/** @var string $pagesPath */
+/** @var string $baseURL */
+
+require_once dirname(__FILE__).'/../../pathVariables.php';
+require_once ROOT."${homeworkPath}/data/genres.php";
+require_once ROOT."${homeworkPath}/config/menu.php";
+require_once ROOT."${homeworkPath}/lib/help-functions.php";
 
 function renderTemplate(string $path, array $templateData = []): string
 {
+	global $homeworkPath,$pagesPath,$baseURL;
 	if (!file_exists($path))
 	{
 		return "";
@@ -20,21 +33,45 @@ function renderTemplate(string $path, array $templateData = []): string
 	return ob_get_clean();
 }
 
-
-function renderLayout(string $content, array $templateData = []): string
+function renderMenuLayout(string $currentActiveItem): string
 {
-	global $menuItemsRef;
-	$menuListLayout = renderTemplate("./homework-5/pagesAndParts/menuLayout.php",
-		['menuItemsRef' => $menuItemsRef]);
+	global $genres, $menuConstItems;
+	return renderTemplate(getLayoutPathName("menuLayout.php"),
+		[
+			'genreItems' => $genres,
+			'currentActiveItem' => $currentActiveItem,
+			'menuConstItems'=>$menuConstItems
+		]);
+}
 
-	$searchBarLayout = renderTemplate("./homework-5/pagesAndParts/searchBarLayout.php");
+function renderSearchBarLayout(): string
+{
+	global $searchIconPath;
+	return renderTemplate(getLayoutPathName("searchBarLayout.php"),
+		['searchIconPath' => $searchIconPath]);
+}
 
-
-	$data = array_merge($templateData, [
+function renderFullPageWithContent(string $menuLayout, string $searchBarLayout, string $content): string
+{
+	global $sidebarLogoPath;
+	$data = [
 		'content' => $content,
-		'menuListLayout'=>$menuListLayout,
-		'headerLayout'=>$searchBarLayout,
-	]);
-	$result = renderTemplate("./homework-5/pagesAndParts/layout.php", $data);
-	return $result;
+		'menuLayout' => $menuLayout,
+		'headerLayout' => $searchBarLayout,
+		'sidebarLogoPath' => $sidebarLogoPath,
+	];
+	return renderTemplate(getLayoutPathName("layout.php"), $data);
+}
+
+function renderMovieDetailLayout(array $movie):string
+{
+	global $favIconsPath,$moviesImagePath;
+	$numbOfActiveRatingSquare=floor($movie['rating']);
+	$data=[
+		'movie'=>$movie,
+		'numbOfActiveRatingSquare'=>$numbOfActiveRatingSquare,
+		'favIconsPath'=>$favIconsPath,
+		'moviesImagePath'=>$moviesImagePath
+	];
+	return renderTemplate(getLayoutPathName('movieDetailLayout.php'),$data);
 }
