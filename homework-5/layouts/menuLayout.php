@@ -12,7 +12,7 @@
 		<a href=<?= "${baseURL}index.php" ?>><?= $menuConstItems["main"] ?></a>
 	<li class="menu-item <?= $currentActiveItem === 'favorites' ? "menu-item--active" : "" ?>">
 		<a href=<?= "${baseURL}${pagesPath}/favorites.php" ?>><?= $menuConstItems["favourites"] ?></a>
-		<?
+		<?php
 		foreach ($genreItems
 
 		as $key => $value): ?>

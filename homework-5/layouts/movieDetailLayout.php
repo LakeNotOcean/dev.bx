@@ -26,15 +26,15 @@
 		<img class="movie-detail-description-image" src="<?= "${baseURL}${moviesImagePath}/${movie['id']}.jpg" ?>" alt="Постер"/>
 		<div class="movie-detail-description-info">
 			<div class="movie-detail-description-info-rating">
-				<?
+				<?php
 				for ($i = 0; $i < $numbOfActiveRatingSquare && $i < 10; $i++): ?>
 					<div class="movie-detail-description-info-rating-square active"></div>
-				<?
+				<?php
 				endfor; ?>
-				<?
+				<?php
 				for ($i = $numbOfActiveRatingSquare; $i < 10; $i++): ?>
 					<div class="movie-detail-description-info-rating-square"></div>
-				<?
+				<?php
 				endfor; ?>
 				<div class="movie-detail-description-info-rating-grade">
 					<?= $movie['rating'] ?>

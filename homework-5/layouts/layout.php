@@ -21,7 +21,7 @@
 <body>
 <div class="wrapper">
 	<div class="sidebar">
-		<img class="sidebar-logo" src=<?= "${baseURL}${sidebarLogoPath}" ?> alt="BITFLIX">
+		<img class="sidebar-logo" alt="BITFLIX" src=<?= "${baseURL}${sidebarLogoPath}" ?>>
 		<?= $menuLayout ?>
 	</div>
 	<div class="container">
@@ -30,7 +30,6 @@
 			<?= $content ?>
 		</div>
 	</div>
-</div>
 </div>
 </body>
 </html>

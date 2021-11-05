@@ -6,9 +6,11 @@
 
 <div class="header">
 	<div class="header-panel">
-		<form action=<?= "${baseURL}index.php" ?> method="get" class="searchbar">
+		<form method="get" class="searchbar" action=<?= "${baseURL}index.php" ?> >
 			<div class="search-icon" style="background-image:url(<?= "${baseURL}$searchIconPath" ?>)"></div>
-			<input class="search-space" type="text" name="search" placeholder="Поиск по каталогу...">
+			<label>
+				<input class="search-space" type="text" name="search" placeholder="Поиск по каталогу...">
+			</label>
 			<input class="header-button search-button" type="submit" value="искать">
 		</form>
 		<a class="header-button add-button" href=<?= "${baseURL}${homeworkPath}/pages/addMovie.php" ?>>добавить фильм
