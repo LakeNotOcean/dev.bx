@@ -8,11 +8,11 @@
 ?>
 
 <div class="movie-list">
-	<?
+	<?php
 	foreach ($movies as $movie): ?>
 		<div class="movie-list--item">
 			<div class="movie-list--item-overlay">
-				<a href=<?= "${pagesPath}/movieDetail.php?id=${movie['id']}" ?> class="movie-list--item-more">Подробнее</a>
+				<a class="movie-list--item-more" href=<?= "${pagesPath}/movieDetail.php?id=${movie['id']}" ?>>Подробнее</a>
 			</div>
 			<div class="movie-list--item-image"
 				 style="background-image: url(<?= "${baseURL}${moviesImagePath}/${movie['id']}.jpg" ?>)">
