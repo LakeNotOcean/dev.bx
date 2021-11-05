@@ -11,7 +11,7 @@
 	<li class="menu-item <?= $currentActiveItem === 'main' ? "menu-item--active" : "" ?>">
 		<a href=<?= "${baseURL}index.php" ?>><?= $menuConstItems["main"] ?></a>
 	<li class="menu-item <?= $currentActiveItem === 'favorites' ? "menu-item--active" : "" ?>">
-		<a href=<?= "${pagesPath}/favorites.php" ?>><?= $menuConstItems["favourites"] ?></a>
+		<a href=<?= "${baseURL}${pagesPath}/favorites.php" ?>><?= $menuConstItems["favourites"] ?></a>
 		<?
 		foreach ($genreItems
 
