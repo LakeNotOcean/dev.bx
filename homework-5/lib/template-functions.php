@@ -12,14 +12,14 @@
 /** @var string $pagesPath */
 /** @var string $baseURL */
 
-require_once dirname(__FILE__).'/../../pathVariables.php';
-require_once ROOT."${homeworkPath}/data/genres.php";
-require_once ROOT."${homeworkPath}/config/menu.php";
-require_once ROOT."${homeworkPath}/lib/help-functions.php";
+require_once dirname(__FILE__) . '/../../pathVariables.php';
+require_once ROOT . "${homeworkPath}/data/genres.php";
+require_once ROOT . "${homeworkPath}/config/menu.php";
+require_once ROOT . "${homeworkPath}/lib/help-functions.php";
 
 function renderTemplate(string $path, array $templateData = []): string
 {
-	global $homeworkPath,$pagesPath,$baseURL;
+	global $homeworkPath, $pagesPath, $baseURL;
 	if (!file_exists($path))
 	{
 		return "";
@@ -40,7 +40,7 @@ function renderMenuLayout(string $currentActiveItem): string
 		[
 			'genreItems' => $genres,
 			'currentActiveItem' => $currentActiveItem,
-			'menuConstItems'=>$menuConstItems
+			'menuConstItems' => $menuConstItems,
 		]);
 }
 
@@ -63,15 +63,15 @@ function renderFullPageWithContent(string $menuLayout, string $searchBarLayout, 
 	return renderTemplate(getLayoutPathName("layout.php"), $data);
 }
 
-function renderMovieDetailLayout(array $movie):string
+function renderMovieDetailLayout(array $movie): string
 {
-	global $favIconsPath,$moviesImagePath;
-	$numbOfActiveRatingSquare=floor($movie['rating']);
-	$data=[
-		'movie'=>$movie,
-		'numbOfActiveRatingSquare'=>$numbOfActiveRatingSquare,
-		'favIconsPath'=>$favIconsPath,
-		'moviesImagePath'=>$moviesImagePath
+	global $favIconsPath, $moviesImagePath;
+	$numbOfActiveRatingSquare = floor($movie['rating']);
+	$data = [
+		'movie' => $movie,
+		'numbOfActiveRatingSquare' => $numbOfActiveRatingSquare,
+		'favIconsPath' => $favIconsPath,
+		'moviesImagePath' => $moviesImagePath,
 	];
-	return renderTemplate(getLayoutPathName('movieDetailLayout.php'),$data);
+	return renderTemplate(getLayoutPathName('movieDetailLayout.php'), $data);
 }

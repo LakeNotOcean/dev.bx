@@ -6,7 +6,6 @@
 /** @var string $homeworkPath */
 /** @var string $baseURL */
 
-
 ?>
 
 <!doctype html>
@@ -16,13 +15,13 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Bitflix</title>
-	<link rel="stylesheet" href=<?="${baseURL}${homeworkPath}/css/reset.css"?>>
-	<link rel="stylesheet" href=<?="${baseURL}${homeworkPath}/css/index.css"?>>
+	<link rel="stylesheet" href=<?= "${baseURL}${homeworkPath}/css/reset.css" ?>>
+	<link rel="stylesheet" href=<?= "${baseURL}${homeworkPath}/css/index.css" ?>>
 </head>
 <body>
 <div class="wrapper">
 	<div class="sidebar">
-		<img class="sidebar-logo" src=<?="${baseURL}${sidebarLogoPath}"?> alt="BITFLIX">
+		<img class="sidebar-logo" src=<?= "${baseURL}${sidebarLogoPath}" ?> alt="BITFLIX">
 		<?= $menuLayout ?>
 	</div>
 	<div class="container">

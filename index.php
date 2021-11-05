@@ -25,11 +25,10 @@ if (isset($_GET['genre']))
 		$currentActiveTitle = $_GET['genre'];
 	}
 }
-else if (isset($_GET['search']))
+elseif (isset($_GET['search']))
 {
-	$search=$_GET['search'];
-	$movies=searchMoviesByTitle($movies,$search);
-
+	$search = $_GET['search'];
+	$movies = searchMoviesByTitle($movies, $search);
 }
 
 $menuLayout = renderMenuLayout($currentActiveTitle);
@@ -46,8 +45,11 @@ if (!empty($movies))
 		'clockImagePath' => $clockImagePath,
 		'moviesImagePath' => $moviesImagePath,
 	]);
-	}
-else $content="Нет подходящих фильмов";
+}
+else
+{
+	$content = "Нет подходящих фильмов";
+}
 
 echo renderFullPageWithContent($menuLayout, $searchBarLayout, $content);
 

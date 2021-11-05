@@ -45,7 +45,7 @@ function searchMoviesByTitle(array $movies, string $search): array
 		return $movies;
 	}
 	return array_filter($movies, function ($movie) use ($search) {
-		if (mb_stripos($movie['title'], $search,0,"UTF-8") !== false)
+		if (mb_stripos($movie['title'], $search, 0, "UTF-8") !== false)
 		{
 			return $movie;
 		}
