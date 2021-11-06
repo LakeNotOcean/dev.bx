@@ -14,11 +14,6 @@ require_once ROOT . "${homeworkPath}/lib/help-functions.php";
 require_once ROOT . "${homeworkPath}/data/genres.php";
 require_once ROOT . "${homeworkPath}/data/generatedLayouts.php";
 
-if (is_null($searchBarLayout))
-{
-	$searchBarLayout = renderSearchBarLayout();
-}
-
 $menuLayout = renderMenuLayout('main');
 $movieDetailLayout = "Фильм с запрошенным id отсутствует в базе данных";
 

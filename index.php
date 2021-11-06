@@ -32,10 +32,6 @@ elseif (isset($_GET['search']))
 }
 
 $menuLayout = renderMenuLayout($currentActiveTitle);
-if (is_null($searchBarLayout))
-{
-	$searchBarLayout = renderSearchBarLayout();
-}
 
 if (!empty($movies))
 {
