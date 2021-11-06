@@ -1,2 +1,7 @@
 <?php
-echo "One more nothing";
+
+require_once "../lib/template-functions.php";
+
+$menuLayout = renderMenuLayout("");
+echo renderFullPageWithContent($menuLayout, "One more nothing");
+

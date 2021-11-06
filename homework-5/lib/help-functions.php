@@ -1,11 +1,8 @@
 <?php
-/**@var string $homeworkPath */
-require_once dirname(__FILE__) . '/../../pathVariables.php';
 
 function getLayoutPathName(string $layoutName): string
 {
-	global $homeworkPath;
-	return ROOT . "${homeworkPath}/layouts/${layoutName}";
+	return "../layouts/${layoutName}";
 }
 
 function getMoviesByGenre(array $movies, string $genre): array
@@ -22,7 +19,7 @@ function getMovieById(array $movies, string $id): array
 {
 	foreach ($movies as $movie)
 	{
-		if ($movie['id'] == $id)
+		if (strval($movie['id']) === $id)
 		{
 			return $movie;
 		}

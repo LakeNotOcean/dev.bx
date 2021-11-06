@@ -1,18 +1,12 @@
 <?php
 
 /** @var array $movies */
-/** @var string $homeworkPath */
-/** @var string $clockImagePath */
-/** @var string $moviesImagePath */
 /** @var array $genres */
-/** @var string $searchBarLayout */
 
-require_once dirname(__FILE__) . "/../../pathVariables.php";
-require_once ROOT . "${homeworkPath}/lib/template-functions.php";
-require_once ROOT . "${homeworkPath}/data/movies.php";
-require_once ROOT . "${homeworkPath}/lib/help-functions.php";
-require_once ROOT . "${homeworkPath}/data/genres.php";
-require_once ROOT . "${homeworkPath}/data/generatedLayouts.php";
+require_once "../lib/template-functions.php";
+require_once "../data/movies.php";
+require_once "../lib/help-functions.php";
+require_once "../data/genres.php";
 
 $menuLayout = renderMenuLayout('main');
 $movieDetailLayout = "Фильм с запрошенным id отсутствует в базе данных";
@@ -27,6 +21,6 @@ if (isset($_GET['id']))
 	}
 }
 
-echo renderFullPageWithContent($menuLayout, $searchBarLayout, $movieDetailLayout);
+echo renderFullPageWithContent($menuLayout, $movieDetailLayout);
 
 

@@ -1,10 +1,6 @@
 <?php
 /**@var array $movies */
-/**@var string $moviesImagePath */
-/**@var string $clockImagePath */
-/** @var string $pagesPath */
 /** @fn formatDurationForHoursAndMinutes */
-/** @var string $baseURL */
 ?>
 
 <div class="movie-list">
@@ -12,10 +8,10 @@
 	foreach ($movies as $movie): ?>
 		<div class="movie-list--item">
 			<div class="movie-list--item-overlay">
-				<a class="movie-list--item-more" href=<?= "${pagesPath}/movieDetail.php?id=${movie['id']}" ?>>Подробнее</a>
+				<a class="movie-list--item-more" href=<?= "movieDetail.php?id=${movie['id']}" ?>>Подробнее</a>
 			</div>
 			<div class="movie-list--item-image"
-				 style="background-image: url(<?= "${baseURL}${moviesImagePath}/${movie['id']}.jpg" ?>)">
+				 style="background-image: url(<?= "../assets/img/${movie['id']}.jpg" ?>)">
 			</div>
 			<div class="movie-list--item-head">
 				<div class="movie-list--item-title">
@@ -30,7 +26,7 @@
 			</div>
 			<div class="movie-list--item-bottom">
 				<div class="movie-list--item-bottom-icon"
-					 style="background-image: url(<?= "${baseURL}${clockImagePath}" ?>)">
+					 style="background-image: url(<?= "../icons/clock1.svg" ?>)">
 
 				</div>
 				<div class="movie-list--item-time">

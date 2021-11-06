@@ -1,9 +1,6 @@
 <?php
 /** @var array $movie */
-/** @var string $favIconsPath */
-/** @var string $moviesImagePath */
 /** @var int $numbOfActiveRatingSquare */
-/** @var string $baseURL */
 ?>
 <div class="movie-detail">
 	<div class="movie-detail-head">
@@ -18,24 +15,17 @@
 			</div>
 		</div>
 		<div class="movie-detail-title-fav-icon">
-			<img class="movie-detail-title-fav" src="<?= "${baseURL}${favIconsPath}notFav.svg" ?>" alt="Избранное"/>
-			<img class="movie-detail-title-fav-hover" src="<?= "${baseURL}${favIconsPath}fav.svg" ?>" alt="Избранное"/>
+			<img class="movie-detail-title-fav" src="<?= "../assets/icons/favIcons/notFav.svg" ?>" alt="Избранное"/>
+			<img class="movie-detail-title-fav-hover" src="<?= "../assets/icons/favIcons/fav.svg" ?>" alt="Избранное"/>
 		</div>
 	</div>
 	<div class="movie-detail-description">
-		<img class="movie-detail-description-image" src="<?= "${baseURL}${moviesImagePath}/${movie['id']}.jpg" ?>" alt="Постер"/>
+		<img class="movie-detail-description-image" src="<?= "../assets/img/${movie['id']}.jpg" ?>" alt="Постер"/>
 		<div class="movie-detail-description-info">
 			<div class="movie-detail-description-info-rating">
-				<?php
-				for ($i = 0; $i < $numbOfActiveRatingSquare && $i < 10; $i++): ?>
-					<div class="movie-detail-description-info-rating-square active"></div>
-				<?php
-				endfor; ?>
-				<?php
-				for ($i = $numbOfActiveRatingSquare; $i < 10; $i++): ?>
-					<div class="movie-detail-description-info-rating-square"></div>
-				<?php
-				endfor; ?>
+				<?php for ($i = 0; $i < 10; $i++): ?>
+					<div class="movie-detail-description-info-rating-square <?= $i < $numbOfActiveRatingSquare ? "active" : "" ?>"></div>
+				<?php endfor; ?>
 				<div class="movie-detail-description-info-rating-grade">
 					<?= $movie['rating'] ?>
 				</div>
