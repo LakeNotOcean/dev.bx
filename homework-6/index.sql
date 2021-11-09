@@ -108,17 +108,17 @@ HAVING COUNT(mg.GENRE_ID) > 3;
 # Формат вывода: Имя актёра, Жанр, в котором у актёра больше всего фильмов.
 
 
-SELECT
-	prev.actorName,
-    prev.genreName
-FROM
-(SELECT a.ID,
-       a.NAME as actorName,
-       mg.GENRE_ID,
-       g.NAME as genreName,
-       COUNT(mg.GENRE_ID) as countGenres
-FROM actor a
-	     LEFT JOIN movie_actor ma on a.ID = ma.ACTOR_ID
-	     LEFT JOIN movie_genre mg on ma.MOVIE_ID = mg.MOVIE_ID
-	     LEFT JOIN genre g on mg.GENRE_ID = g.ID
-group by a.ID, mg.GENRE_ID ORDER BY countGenres desc) as prev group by prev.ID
+SELECT prev.actorName,
+       prev.genreName
+FROM (SELECT a.ID,
+             a.NAME             as actorName,
+             mg.GENRE_ID,
+             g.NAME             as genreName,
+             COUNT(mg.GENRE_ID) as countGenres
+      FROM actor a
+	           LEFT JOIN movie_actor ma on a.ID = ma.ACTOR_ID
+	           LEFT JOIN movie_genre mg on ma.MOVIE_ID = mg.MOVIE_ID
+	           LEFT JOIN genre g on mg.GENRE_ID = g.ID
+      group by a.ID, mg.GENRE_ID
+      ORDER BY countGenres desc) as prev
+group by prev.ID
