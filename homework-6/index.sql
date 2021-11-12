@@ -54,7 +54,7 @@ FROM movie m
      movie_title mt on m.ID = mt.MOVIE_ID
 WHERE mt.LANGUAGE_ID = 'ru'
   AND d.NAME = 'Джеймс Кэмерон'
-HAVING max(m.LENGTH);
+AND m.LENGTH=(SELECT MAX(m.LENGTH) from movie m);
 
 # 4. ** Вывести список фильмов с названием, сокращённым до 10 символов. Если название короче 10 символов – оставляем как есть. Если длиннее – сокращаем до 10 символов и добавляем многоточие.
 #  Формат: ID фильма, сокращённое название
