@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@400;600;700&display=swap');
+
+.movie-detail{
+	display:flex;
+	flex-direction: column;
+
+	margin: 41px 0 41px 44px;
+	background-color: white;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+
+	font-family: Open Sans,sans-serif;
+	text-overflow: ellipsis;
+}
+
+.movie-detail-head{
+	position: relative;
+	margin: 22px 28px 0 30px;
+	border-bottom: 1px solid #CCCCCC;
+	display: flex;
+	flex-direction:row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	padding-bottom: 25px;
+	align-items: center;
+}
+.movie-detail-title{
+	font-style: normal;
+	font-weight: bold;
+	font-size: 48px;
+	line-height: 65px;
+
+
+
+
+	color: #333333;
+}
+.movie-detail-title p{
+	max-height: 65px;
+	max-width: 1230px;
+
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.movie-detail-title-subtitle{
+	margin-top: 8px;
+	display: flex;
+	flex-direction: row;
+}
+
+.movie-detail-title-subtitle p{
+	max-height: 33px;
+	max-width: 1230px;
+
+	overflow: hidden;
+	text-overflow: ellipsis;
+
+	font-style: normal;
+	font-weight: 600;
+	font-size: 24px;
+	line-height: 33px;
+
+	color: #999999;
+}
+
+.movie-detail-title-age{
+	margin-left: 10px;
+	width: 39px;
+	height: 32px;
+	background: rgba(242, 242, 242, 0.1);
+	border: 3px solid #CCCCCC;
+	box-sizing: border-box;
+	border-radius: 7px;
+
+	font-style: normal;
+	font-weight: 600;
+	font-size: 18px;
+	line-height: 25px;
+	text-align: center;
+
+	color: #CCCCCC;
+
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+
+.movie-detail-title-fav-icon{
+	position: relative;
+	height: min-content;
+	width: min-content;
+
+	float: right;
+}
+.movie-detail-title-fav{
+	height: min-content;
+	width: min-content;
+
+	float: right;
+}
+
+.movie-detail-title-fav-hover{
+	position: absolute;
+	top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+
+	transition: opacity .2s;
+
+	opacity: 0;
+}
+.movie-detail-title-fav-icon:hover .movie-detail-title-fav-hover {
+	opacity: 1;
+}
+
+.movie-detail-description{
+	margin: 30px 37px 44px 31px;
+	display: flex;
+	flex-direction: row;
+}
+.movie-detail-description-image{
+	width: 469px;
+	height: 730px;
+	background: #F2F2F2;
+	padding:10px;
+}
+
+.movie-detail-description-info{
+	margin-left: 44px;
+	display: flex;
+	flex-direction: column;
+}
+
+.movie-detail-description-info-rating{
+	margin-left: 10px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.movie-detail-description-info-rating-square{
+	width: 27px;
+	height: 27px;
+	background: #F2F2F2;
+	border: 5px solid #FFFFFF;
+	box-sizing: border-box;
+}
+.movie-detail-description-info-rating-square.active {
+	background: #E78818;
+}
+
+.movie-detail-description-info-rating-grade{
+	margin-left: 12px;
+	width: 55px;
+	height: 55px;
+	background: #E78818;
+	border-radius: 50%;
+
+	font-size: 22px;
+	line-height: 30px;
+
+	/* identical to box height */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+
+	color: #FFFFFF;
+}
+
+.movie-detail-description-info h1{
+	margin-bottom: 22px;
+	margin-top: 10px;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 24px;
+	line-height: 33px;
+
+	color: #333333;
+}
+
+.movie-detail-description-info-feature{
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 25px;
+
+}
+
+.movie-detail-description-info-feature-cat{
+	display: flex;
+	flex-direction: column;
+	height: 96px;
+	width: 200px;
+	align-items: flex-start;
+
+}
+.movie-detail-description-info-feature-cat p{
+	margin-bottom: 15px;
+
+	text-align: left;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	line-height: 22px;
+
+
+	/* identical to box height */
+
+	color: #666666;
+
+}
+.movie-detail-description-info-feature-cat p:last-child{
+	margin-bottom: 0;
+}
+
+.movie-detail-description-info-feature-data{
+	display: flex;
+	flex-direction: column;
+	margin-left: 85px;
+	height: 118px;
+}
+
+.movie-detail-description-info-feature-data p{
+	margin-bottom: 15px;
+	max-height: 22px;
+
+	font-style: normal;
+	font-weight: normal;
+	font-size: 16px;
+	line-height: 22px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+
+
+	color: #000000;
+}
+
+.movie-detail-description-info-feature-data p:last-child{
+	margin-bottom: 0;
+	max-height: 44px;
+}
+
+.movie-detail-description-info-full{
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	line-height: 28px;
+
+	/* or 156% */
+
+	color: #000000
+}
+
+
+
+
+
+
+
+
+
+
+
