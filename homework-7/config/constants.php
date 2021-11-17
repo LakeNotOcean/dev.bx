@@ -11,7 +11,15 @@ const mRelease = "RELEASE_DATE";
 const mRating = "RATING";
 const mGenres = "GENRES";
 
+const dName="NAME";
+const aNames="MOVIE_ACTORS";
+
+const gName="NAME";
+const gCODE="CODE";
+const gKeyName="ID";
+
 
 //requests
-const getGenreStr="genre";
-const getSearchStr="search";
+const getGenreStr = "genre";
+const getSearchStr = "search";
+const getMovieIdStr="id";

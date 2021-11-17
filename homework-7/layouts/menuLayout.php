@@ -14,8 +14,8 @@
 		<a href=<?= "favorites.php" ?>><?= $menuConstItems["favourites"] ?></a>
 	</li>
 		<?php foreach ($genreItems as $key => $value): ?>
-	<li class="menu-item <?= $currentActiveItem === $key ? "menu-item--active" : "" ?>">
-		<a href=<?= "index.php?genre=${key}" ?>><?= $value ?></a>
+	<li class="menu-item <?= $currentActiveItem === $value[gCODE] ? "menu-item--active" : "" ?>">
+		<a href=<?= "index.php?genre=${value[gCODE]}" ?>><?= $value[gName] ?></a>
 		<?php
 		endforeach; ?>
 	</li>

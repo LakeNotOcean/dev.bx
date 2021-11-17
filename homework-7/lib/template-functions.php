@@ -4,7 +4,6 @@
 /** @var array $genres */
 
 
-require_once "../data/genres.php";
 require_once "../config/menu.php";
 require_once "../lib/help-functions.php";
 
@@ -23,12 +22,12 @@ function renderTemplate(string $path, array $templateData = []): string
 	return ob_get_clean();
 }
 
-function renderMenuLayout(string $currentActiveItem): string
+function renderMenuLayout(string $currentActiveItem,array $genresList): string
 {
-	global $genres, $menuConstItems;
+	global $menuConstItems;
 	return renderTemplate(getLayoutPathName("menuLayout.php"),
 		[
-			'genreItems' => $genres,
+			'genreItems' => $genresList,
 			'currentActiveItem' => $currentActiveItem,
 			'menuConstItems' => $menuConstItems,
 		]);
@@ -47,7 +46,7 @@ function renderFullPageWithContent(string $menuLayout, string $content): string
 function renderMovieDetailLayout(array $movie): string
 {
 	global $favIconsPath, $moviesImagePath;
-	$numbOfActiveRatingSquare = floor($movie['rating']);
+	$numbOfActiveRatingSquare = floor($movie[mRating]);
 	$data = [
 		'movie' => $movie,
 		'numbOfActiveRatingSquare' => $numbOfActiveRatingSquare,

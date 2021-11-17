@@ -6,11 +6,11 @@
 	<div class="movie-detail-head">
 
 		<div class="movie-detail-title">
-			<p><?= $movie['title'] ?></p>
+			<p><?= $movie[mTitle] ?></p>
 			<div class="movie-detail-title-subtitle">
-				<p><?= $movie['original'] ?></p>
+				<p><?= $movie[mOriginTitle] ?></p>
 				<div class="movie-detail-title-age">
-					<?= $movie['age-restriction'] . '+' ?>
+					<?= $movie[mAge] . '+' ?>
 				</div>
 			</div>
 		</div>
@@ -20,14 +20,14 @@
 		</div>
 	</div>
 	<div class="movie-detail-description">
-		<img class="movie-detail-description-image" src="<?= "../assets/img/${movie['id']}.jpg" ?>" alt="Постер"/>
+		<img class="movie-detail-description-image" src="<?= "../assets/img/${movie[mID]}.jpg" ?>" alt="Постер"/>
 		<div class="movie-detail-description-info">
 			<div class="movie-detail-description-info-rating">
 				<?php for ($i = 0; $i < 10; $i++): ?>
 					<div class="movie-detail-description-info-rating-square <?= $i < $numbOfActiveRatingSquare ? "active" : "" ?>"></div>
 				<?php endfor; ?>
 				<div class="movie-detail-description-info-rating-grade">
-					<?= $movie['rating'] ?>
+					<?= $movie[mRating] ?>
 				</div>
 			</div>
 			<h1>О Фильме</h1>
@@ -38,14 +38,14 @@
 					<p>В главных ролях: </p>
 				</div>
 				<div class="movie-detail-description-info-feature-data">
-					<p><?= $movie['release-date'] ?></p>
-					<p><?= $movie['director'] ?></p>
-					<p><?= implode(',', $movie['cast']) ?></p>
+					<p><?= $movie[mRelease] ?></p>
+					<p><?= $movie[dName] ?></p>
+					<p><?= implode(',', $movie[aNames]) ?></p>
 				</div>
 			</div>
 			<h1>Описание</h1>
 			<div class="movie-detail-description-info-full">
-				<?= $movie['description'] ?>
+				<?= $movie[mDescription] ?>
 			</div>
 		</div>
 	</div>

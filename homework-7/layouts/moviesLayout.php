@@ -12,7 +12,7 @@
 				<a class="movie-list--item-more" href=<?= "movieDetail.php?id=${movie[mID]}" ?>>Подробнее</a>
 			</div>
 			<div class="movie-list--item-image"
-				 style="background-image: url(<?= "../assets/img/${movie['id']}.jpg" ?>)">
+				 style="background-image: url(<?= "../assets/img/${movie[mID]}.jpg" ?>)">
 			</div>
 			<div class="movie-list--item-head">
 				<div class="movie-list--item-title">
