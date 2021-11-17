@@ -12,7 +12,7 @@ require_once "../databaseFunctions/moviesDatabaseQueries.php";
 $menuLayout = renderMenuLayout('main', $genres);
 $movieDetailLayout = "Фильм с запрошенным id отсутствует в базе данных";
 
-if (isset($_GET[getMovieIdStr]))
+if (isset($_GET[getMovieIdStr]) and !empty($_GET[getMovieIdStr]))
 {
 	$movie = getMovieById($database, $_GET[getMovieIdStr]);
 
