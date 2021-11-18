@@ -40,7 +40,7 @@
 				<div class="movie-detail-description-info-feature-data">
 					<p><?= $movie[mRelease] ?></p>
 					<p><?= $movie[dName] ?></p>
-					<p><?= implode(',', $movie[aNames]) ?></p>
+					<p><?= implode(', ', $movie[maNames]) ?></p>
 				</div>
 			</div>
 			<h1>Описание</h1>

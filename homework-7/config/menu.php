@@ -1,6 +1,8 @@
 <?php
 
+require_once "../config/constants.php";
+
 $menuConstItems=[
-	"main"=>"Главная",
-	"favourites"=>"Избранное"
+	menuMain=>"Главная",
+	menuFavourites=>"Избранное"
 ];

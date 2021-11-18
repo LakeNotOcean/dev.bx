@@ -12,14 +12,21 @@ const mRating = "RATING";
 const mGenres = "GENRES";
 
 const dName="NAME";
-const aNames="MOVIE_ACTORS";
+const maNames="MOVIE_ACTORS";
 
 const gName="NAME";
 const gCODE="CODE";
 const gKeyName="ID";
+
+const aName="NAME";
+const aID="ID";
 
 
 //requests
 const getGenreStr = "genre";
 const getSearchStr = "search";
 const getMovieIdStr="id";
+
+//menu code
+const menuMain="main";
+const menuFavourites="favourites";

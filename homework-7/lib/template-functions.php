@@ -3,7 +3,6 @@
 /** @var array $menuConstItems */
 /** @var array $genres */
 
-
 require_once "../config/menu.php";
 require_once "../lib/help-functions.php";
 
@@ -22,7 +21,7 @@ function renderTemplate(string $path, array $templateData = []): string
 	return ob_get_clean();
 }
 
-function renderMenuLayout(string $currentActiveItem,array $genresList): string
+function renderMenuLayout(string $currentActiveItem, array $genresList): string
 {
 	global $menuConstItems;
 	return renderTemplate(getLayoutPathName("menuLayout.php"),
@@ -32,7 +31,6 @@ function renderMenuLayout(string $currentActiveItem,array $genresList): string
 			'menuConstItems' => $menuConstItems,
 		]);
 }
-
 
 function renderFullPageWithContent(string $menuLayout, string $content): string
 {

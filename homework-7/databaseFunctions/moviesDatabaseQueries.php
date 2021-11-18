@@ -19,7 +19,6 @@ function getGenresList(mysqli $database): array
 
 function getMoviesList(mysqli $database, string $addToQuery = ""): array
 {
-	$addToQuery = mysqli_escape_string($database, $addToQuery);
 	$query = "SELECT  m.ID,m.TITLE,m.ORIGINAL_TITLE,m.DESCRIPTION,m.DURATION,
        m.AGE_RESTRICTION,m.RELEASE_DATE,m.RATING,d.NAME,
        (SELECT  GROUP_CONCAT(mg.GENRE_ID)
@@ -41,10 +40,10 @@ function getMoviesListOnGenres(mysqli $database, array $genreList, int $genreCod
 	$genreSelector = "";
 	if ($genreCode > 0)
 	{
-		$genreSelector = "inner join movie_genre mg on m.ID=mg.MOVIE_ID WHERE mg.GENRE_ID={$genreCode}";
+		$genreSelector = "inner join movie_genre mg on m.ID=mg.MOVIE_ID WHERE mg.GENRE_ID=$genreCode";
 	}
 	$rawData = getMoviesList($database, $genreSelector);
-	return formatDatabaseRawDataMovies($rawData, $genreList);
+	return changeIdsOnNames($rawData, $genreList, mGenres, gName);
 }
 
 function getMovieById(mysqli $database, int $movieId): array
@@ -53,8 +52,30 @@ function getMovieById(mysqli $database, int $movieId): array
 	{
 		return [];
 	}
-	$movieSelector = "WHERE m.ID=${movieId}";
-	return getMoviesList($database, $movieSelector)[0];
+	$movieSelector = "WHERE m.ID=$movieId";
+	$movie = getMoviesList($database, $movieSelector);
+	$actors = getActorsListOnMovieId($database, $movieId);
+	return changeIdsOnNames($movie, $actors, maNames, aName)[0];
+}
+
+function getActorsListOnMovieId(mysqli $database, int $movieId): array
+{
+	$query = "SELECT a.ID, a.NAME
+	FROM movie_actor ma inner join actor a on ma.ACTOR_ID = a.ID WHERE ma.MOVIE_ID=$movieId";
+	$result = mysqli_query($database, $query);
+	if (!$result)
+	{
+		trigger_error($database->error, E_USER_ERROR);
+	}
+	$rowData = mysqli_fetch_all($result, MYSQLI_ASSOC);
+	return formatDatabaseRawData($rowData, aID);
+}
+
+function getMoviesByTitle(mysqli $database, array $genreList, string $searchStr): array
+{
+	$searchStr = mysqli_escape_string($database, $searchStr);
+	$query = "WHERE LOCATE('{$searchStr}',m.TITLE)!=0";
+	return changeIdsOnNames(getMoviesList($database, $query), $genreList, mGenres, gName);
 }
 
 

@@ -1,46 +1,41 @@
 <?php
 
 /** @var mysqli $database */
-/** @var array $movies */
 /** @var array $genres */
-/** @var bool $isGenreSelected */
 
 require_once "../lib/template-functions.php";
 require_once "../lib/help-functions.php";
 require_once "../databaseFunctions/moviesDatabaseQueries.php";
 require_once "../config/config.php";
-require_once "../onFirstOpen.php";
+require_once "../onPageOpen.php";
 require_once "../config/constants.php";
 
-$currentActiveTitle = 'main';
+$selectedMenuItem = menuMain;
+$movies = [];
 
-if (isset($_GET[getGenreStr]))
+if (!empty($_GET[getGenreStr]))
 {
 	$genreCode = $_GET[getGenreStr];
 
-	if (!empty($genreCode))
+	$genreId = intval(array_search($genreCode, array_column($genres, gCODE))) + 1;
+	if ($genreId > 0)
 	{
-		$genreId = intval(array_search($genreCode, array_column($genres, gCODE))) + 1;
-		if ($genreId > 0)
-		{
-			$movies = getMoviesListOnGenres($database, $genres, $genreId);
-			$isGenreSelected = true;
-		}
-		$currentActiveTitle = $genreCode;
+		$movies = getMoviesListOnGenres($database, $genres, $genreId);
 	}
+	$selectedMenuItem = $genreCode;
 }
-elseif (isset($_GET[getSearchStr]) && !empty($_GET[getSearchStr]))
+elseif (!empty($_GET[getSearchStr]))
 {
 	$searchStr = $_GET[getSearchStr];
-	$movies = getMoviesByTitle($database, $searchStr);
+	$movies = getMoviesByTitle($database, $genres,$searchStr);
 }
-elseif ($isGenreSelected === true)
+else
 {
-	$movies = getMoviesList($database);
-	$isGenreSelected = false;
+	$movies = getMoviesListOnGenres($database,$genres);
 }
 
-$menuLayout = renderMenuLayout($currentActiveTitle, $genres);
+
+$menuLayout = renderMenuLayout($selectedMenuItem, $genres);
 
 if (!empty($movies))
 {

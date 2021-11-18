@@ -7,11 +7,11 @@
 
 <ul class="menu">
 
-	<li class="menu-item <?= $currentActiveItem === 'main' ? "menu-item--active" : "" ?>">
-		<a href=<?= "index.php" ?>><?= $menuConstItems["main"] ?></a>
+	<li class="menu-item <?= $currentActiveItem === menuMain ? "menu-item--active" : "" ?>">
+		<a href=<?= "index.php" ?>><?= $menuConstItems[menuMain] ?></a>
 	</li>
-	<li class="menu-item <?= $currentActiveItem === 'favorites' ? "menu-item--active" : "" ?>">
-		<a href=<?= "favorites.php" ?>><?= $menuConstItems["favourites"] ?></a>
+	<li class="menu-item <?= $currentActiveItem === menuFavourites ? "menu-item--active" : "" ?>">
+		<a href=<?= "favorites.php" ?>><?= $menuConstItems[menuFavourites] ?></a>
 	</li>
 		<?php foreach ($genreItems as $key => $value): ?>
 	<li class="menu-item <?= $currentActiveItem === $value[gCODE] ? "menu-item--active" : "" ?>">
