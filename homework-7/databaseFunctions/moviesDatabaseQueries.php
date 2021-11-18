@@ -54,6 +54,8 @@ function getMovieById(mysqli $database, int $movieId): array
 	}
 	$movieSelector = "WHERE m.ID=$movieId";
 	$movie = getMoviesList($database, $movieSelector);
+	if (empty($movie))
+		return [];
 	$actors = getActorsListOnMovieId($database, $movieId);
 	return changeIdsOnNames($movie, $actors, maNames, aName)[0];
 }

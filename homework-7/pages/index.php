@@ -17,7 +17,8 @@ if (!empty($_GET[getGenreStr]))
 {
 	$genreCode = $_GET[getGenreStr];
 
-	$genreId = intval(array_search($genreCode, array_column($genres, gCODE))) + 1;
+	$idSearchResult = array_search($genreCode, array_column($genres, gCODE));
+	$genreId = $idSearchResult !== false ? intval($idSearchResult) + 1 : 0;
 	if ($genreId > 0)
 	{
 		$movies = getMoviesListOnGenres($database, $genres, $genreId);
@@ -27,13 +28,12 @@ if (!empty($_GET[getGenreStr]))
 elseif (!empty($_GET[getSearchStr]))
 {
 	$searchStr = $_GET[getSearchStr];
-	$movies = getMoviesByTitle($database, $genres,$searchStr);
+	$movies = getMoviesByTitle($database, $genres, $searchStr);
 }
 else
 {
-	$movies = getMoviesListOnGenres($database,$genres);
+	$movies = getMoviesListOnGenres($database, $genres);
 }
-
 
 $menuLayout = renderMenuLayout($selectedMenuItem, $genres);
 
