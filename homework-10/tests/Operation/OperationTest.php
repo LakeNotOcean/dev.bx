@@ -213,22 +213,31 @@ class OperationTest extends TestCase
 
 	public function testThatAfterActionFail(): void
 	{
-		$action=$this->getMockBuilder(\App\Operation\Action::class)
+		$action = $this->getMockBuilder(\App\Operation\Action::class)
 			->getMockForAbstractClass();
 
-		$result=new \App\Result();
-		$errorMessage="action is failed";
+		$result = new \App\Result();
+		$errorMessage = "action is failed";
 		$result->addError(new Error($errorMessage));
 
 		$action->expects(static::once())
 			->method('process')
-		->willReturn($result);
+			->willReturn($result);
 
-		$order=$this->getOrderThatSaves();
-		$operation=$operation = new App\Operation\Operation($order);
-		$operation->addAction(App\Operation\Operation::ACTION_AFTER_SAVE,$action);
-		$result=$operation->launch();
+		$order = $this->getOrderThatSaves();
+		$operation = $operation = new App\Operation\Operation($order);
+		$operation->addAction(App\Operation\Operation::ACTION_AFTER_SAVE, $action);
+		$result = $operation->launch();
 
 		static::assertEquals($errorMessage, $result->getErrorMessages()[0]);
+	}
+
+	public function testThatAfterActionSuccessIfNotAction(): void
+	{
+		$setting = new App\Operation\Settings();
+		$order = $this->getOrderThatSaves();
+		$operation = new App\Operation\Operation($order, $setting);
+		$result=$operation->launch();
+		static::assertTrue($result->isSuccess());
 	}
 }
