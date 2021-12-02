@@ -161,7 +161,7 @@ class FinancialTransactionsRuTest extends \PHPUnit\Framework\TestCase
 		static::assertFalse($result->isSuccess());
 	}
 
-	public function testChangeFieldsNumberToData(): void
+	public function testChangeNumberOfFieldsToData(): void
 	{
 		$dataGenerator = new \App\DataGenerator\FinancialTransactionsRu();
 		$data = self::dataWithNewField;
