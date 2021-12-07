@@ -55,7 +55,7 @@ class FinancialTransactionsRuTest extends \PHPUnit\Framework\TestCase
 	public function getDataForTestGetData(): array
 	{
 		return [
-			'emptyData' => [[], "ST00012|Name=|PersonalAcc=|BankName=|BIC=|CorrespAcc="],
+			'emptyData' => [[], "ST00012"],
 			'defaultData' => [
 				self::defaultData,
 				"ST00012|Name=Name|PersonalAcc=something|BankName=something|BIC=Nothing|CorrespAcc=something",
@@ -221,6 +221,5 @@ class FinancialTransactionsRuTest extends \PHPUnit\Framework\TestCase
 		'BankName' => 'something',
 		'BIC' => 'Nothing',
 		'CorrespAcc' => 'something',
-		'test'=>'test'
 	];
 }
