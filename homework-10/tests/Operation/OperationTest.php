@@ -6,6 +6,8 @@ use App\Operation\Action;
 
 class OperationTest extends TestCase
 {
+	protected const actionErrorMessage = 'action is failed';
+
 	protected function getOrderThatSaves(bool $isSuccess = true): Order
 	{
 		$order = $this->getMockBuilder(\App\Order::class)
@@ -42,6 +44,21 @@ class OperationTest extends TestCase
 		$action->expects(static::once())
 			->method('process')
 			->willReturn(new \App\Result());
+		return $action;
+	}
+
+	protected function getActionThatFailed(): Action
+	{
+		$action = $this->getMockBuilder(\App\Operation\Action::class)
+			->getMockForAbstractClass();
+
+		$result = new \App\Result();
+		$errorMessage = self::actionErrorMessage;
+		$result->addError(new Error($errorMessage));
+
+		$action->expects(static::once())
+			->method('process')
+			->willReturn($result);
 		return $action;
 	}
 
@@ -211,33 +228,34 @@ class OperationTest extends TestCase
 		$operation->launch();
 	}
 
-	public function testThatAfterActionFail(): void
+	public function testIfAfterActionFail(): void
 	{
 		$action = $this->getMockBuilder(\App\Operation\Action::class)
 			->getMockForAbstractClass();
 
-		$result = new \App\Result();
-		$errorMessage = "action is failed";
-		$result->addError(new Error($errorMessage));
-
-		$action->expects(static::once())
-			->method('process')
-			->willReturn($result);
+		$action = $this->getActionThatFailed();
 
 		$order = $this->getOrderThatSaves();
-		$operation = $operation = new App\Operation\Operation($order);
+		$operation = new App\Operation\Operation($order);
 		$operation->addAction(App\Operation\Operation::ACTION_AFTER_SAVE, $action);
 		$result = $operation->launch();
 
-		static::assertEquals($errorMessage, $result->getErrorMessages()[0]);
+		static::assertEquals(self::actionErrorMessage, $result->getErrorMessages()[0]);
 	}
 
-	public function testThatAfterActionSuccessIfNotAction(): void
+	public function testThatAfterActionNotCheckedIfBeforeActionFail(): void
 	{
-		$setting = new App\Operation\Settings();
-		$order = $this->getOrderThatSaves();
+		$setting = $this->getMockBuilder(\App\Operation\Settings::class)
+			->getMock();
+		$setting->expects(static::never())->method("isAfterActionsEnabled");
+		$setting->expects(static::once())->method("isBeforeActionsEnabled")->willReturn(true);
+
+		$action = $this->getActionThatFailed();
+
+		$order = $this->getMockBuilder(\App\Order::class)->getMock();
+
 		$operation = new App\Operation\Operation($order, $setting);
-		$result=$operation->launch();
-		static::assertTrue($result->isSuccess());
+		$operation->addAction(App\Operation\Operation::ACTION_BEFORE_SAVE, $action);
+		$operation->launch();
 	}
 }
