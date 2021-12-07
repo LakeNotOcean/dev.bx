@@ -55,7 +55,7 @@ class FinancialTransactionsRuTest extends \PHPUnit\Framework\TestCase
 	public function getDataForTestGetData(): array
 	{
 		return [
-			'emptyData' => [[], "ST00012"],
+			'emptyData' => [[], "ST00012|Name=|PersonalAcc=|BankName=|BIC=|CorrespAcc="],
 			'defaultData' => [
 				self::defaultData,
 				"ST00012|Name=Name|PersonalAcc=something|BankName=something|BIC=Nothing|CorrespAcc=something",
@@ -66,7 +66,7 @@ class FinancialTransactionsRuTest extends \PHPUnit\Framework\TestCase
 			],
 			'dataWithEmptyFiled' => [
 				self::dataWithRemoveField,
-				"ST00012|PersonalAcc=something|BankName=something|BIC=Nothing|CorrespAcc=something",
+				"ST00012|Name=|PersonalAcc=something|BankName=something|BIC=Nothing|CorrespAcc=something",
 			],
 		];
 	}
@@ -168,9 +168,10 @@ class FinancialTransactionsRuTest extends \PHPUnit\Framework\TestCase
 
 		$dataGenerator->setFields($data);
 		$result = $dataGenerator->validate();
-		static::assertFalse($result->isSuccess());
+		static::assertTrue($result->isSuccess());
 
 		$data = self::dataWithRemoveField;
+		$dataGenerator->setFields($data);
 		$result = $dataGenerator->validate();
 		static::assertFalse($result->isSuccess());
 	}
