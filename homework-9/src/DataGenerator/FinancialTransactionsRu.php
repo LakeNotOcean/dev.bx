@@ -2,7 +2,6 @@
 
 namespace App\DataGenerator;
 
-
 /**
  * This class implements "Standards of financial transactions. Two-dimensional barcode symbols for payments by individuals"
  *
@@ -76,6 +75,7 @@ final class FinancialTransactionsRu
 	public const ERROR_CODE_MANDATORY_FIELD_IS_NOT_FILLED = 101;
 	public const ERROR_CODE_VALUE_IS_TOO_LONG = 102;
 	public const ERROR_CODE_VALUE_INCORRECT_TYPE = 103;
+	public const ERROR_CODE_WRONG_NUMBER_OF_FIELDS = 104;
 
 	protected const VALUE_DELIMITER = '=';
 
@@ -84,7 +84,6 @@ final class FinancialTransactionsRu
 
 	public function __construct()
 	{
-
 		$this->charsetCode = self::CHARSET_UTF8;
 
 		$this->fields = [];
@@ -151,13 +150,22 @@ final class FinancialTransactionsRu
 		$result = new \App\Result();
 
 		$mandatoryFieldNames = $this->getMandatoryFieldNames();
+		if (count($this->fields) !== count($mandatoryFieldNames))
+		{
+			$result->addError(
+				new \Error(
+					'incorrect number of fields ',
+					self::ERROR_CODE_WRONG_NUMBER_OF_FIELDS,
+				)
+			);
+		}
 		foreach ($mandatoryFieldNames as $mandatoryFieldName)
 		{
 			if (empty($this->fields[$mandatoryFieldName]))
 			{
 				$result->addError(
 					new \Error(
-						'Mandatory field ' . $mandatoryFieldName . ' is not filled',
+						'wrong number of fields',
 						self::ERROR_CODE_MANDATORY_FIELD_IS_NOT_FILLED,
 					)
 				);
@@ -226,17 +234,16 @@ final class FinancialTransactionsRu
 		$delimiter = $this->pickupDelimiter();
 		$fields = $this->fields;
 
-		$fields = array_filter($fields, static function($value) {
+		$fields = array_filter($fields, static function ($value) {
 			return (!empty($value) && !is_array($value) && !is_object($value));
 		});
 
 		$data =
 			self::FORMAT_IDENTIFIER
 			. self::FORMAT_VERSION
-			. $this->charsetCode
-		;
-
-		foreach ($this->getMandatoryFieldNames() as $fieldName)
+			. $this->charsetCode;
+		$fieldsNames=array_keys($this->fields);
+		foreach ($fieldsNames as $fieldName)
 		{
 			$data .= $delimiter . $fieldName . self::VALUE_DELIMITER . ($fields[$fieldName] ?? '');
 			unset ($fields[$fieldName]);
@@ -252,7 +259,7 @@ final class FinancialTransactionsRu
 
 	protected function pickupDelimiter(): ?string
 	{
-		$possibleDelimiters = ['|', '~', '_', '#', '$' , '^', '&', '*', '/', '`', '@', '%'];
+		$possibleDelimiters = ['|', '~', '_', '#', '$', '^', '&', '*', '/', '`', '@', '%'];
 
 		$allValues = implode(' ', $this->fields);
 		foreach ($possibleDelimiters as $delimiter)
